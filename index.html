@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oráculo Corporativo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at center, #0f2027, #203a43, #2c5364);
+      color: #f1f1f1;
+      font-family: 'Roboto Mono', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 40px 20px 10px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #00ffe0;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid #00ffe0;
+      border-radius: 12px;
+      padding: 30px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 20px #00ffe077;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      background-color: #1a1a1a;
+      color: #fff;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(90deg, #00ffe0, #007bff);
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #007bff, #00ffe0);
+    }
+
+    #resposta {
+      margin-top: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+      box-shadow: 0 0 10px #00ffe0aa;
+      min-height: 50px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Oráculo Corporativo</h1>
+  </header>
+  <div class="container">
+    <input type="text" id="pergunta" placeholder="Digite sua pergunta...">
+    <button onclick="fazerPergunta()">Perguntar</button>
+    <div id="resposta"></div>
+  </div>
+
+  <script>
+    async function fazerPergunta() {
+      const pergunta = document.getElementById('pergunta').value;
+      const respostaDiv = document.getElementById('resposta');
+      respostaDiv.innerText = 'Digitando...';
+
+      const res = await fetch('http://localhost:3000/perguntar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pergunta })
+      });
+
+      const data = await res.json();
+
+      // Animação de digitação
+      const texto = data.resposta;
+      let i = 0;
+      respostaDiv.innerText = '';
+      const interval = setInterval(() => {
+        respostaDiv.innerText += texto.charAt(i);
+        i++;
+        if (i >= texto.length) clearInterval(interval);
+      }, 25); // Velocidade da digitação
+    }
+  </script>
+</body>
+</html>

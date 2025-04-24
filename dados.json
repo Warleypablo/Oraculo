@@ -1,0 +1,27 @@
+[
+    {
+      "pergunta": "Como solicitar férias?",
+      "resposta": "Você deve acessar o sistema RH Online, ir até 'Solicitação de Férias' e preencher o formulário com as datas desejadas."
+    },
+    {
+      "pergunta": "Como emitir um relatório financeiro?",
+      "resposta": "Acesse o sistema financeiro, vá em 'Relatórios' e selecione o tipo desejado. Clique em 'Gerar PDF'."
+    },
+    {
+      "pergunta": "Qual o horário de funcionamento do setor de TI?",
+      "resposta": "O setor de TI funciona das 9h às 18h, de segunda a sexta-feira."
+    },
+    {
+      "pergunta": "Quem aprova as requisições de material?",
+      "resposta": "As requisições são aprovadas pelo gestor do departamento requisitante."
+    },
+    {
+      "pergunta": "Como faço para trocar minha senha do e-mail corporativo?",
+      "resposta": "Acesse o portal de serviços da TI, clique em 'Trocar senha' e siga as instruções."
+    },
+    {
+        "pergunta": "tudo bem?",
+        "resposta": "Tudo certo! Como posso ajudar hoje?"
+    }
+  ]
+  
